@@ -1,5 +1,8 @@
 var timeBlocks = document.getElementsByClassName("time-block");
+var currentDay = document.getElementById("currentDay");
 currentTime = moment().hour()
+
+currentDay.textContent = moment().format("dddd, MMM Do YYYY")
 
 Array.from(timeBlocks).forEach(block => {
     let blockId = block.id,
