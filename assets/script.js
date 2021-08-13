@@ -5,10 +5,11 @@ var saveButton = document.getElementsByClassName("saveBtn")
 currentTime = moment().hour()
 
 currentDay.textContent = moment().format("dddd, MMM Do YYYY")
+getAppointments();
 
 Array.from(timeBlocks).forEach(block => {
-    let blockId = block.id,
-        blockHour;
+    var blockId = block.id
+    var blockHour;
     if (blockId) {
         blockHour = parseInt(blockId);
     }
@@ -37,12 +38,15 @@ function saveAppointment() {
 
     for (var i = 0; i < eventText.length; i++) {
         //var eventContent = eventText.value
-        localStorage.setItem("Appointment", eventText.value)
+        var singleEventText = eventText[i].value
+        localStorage.setItem("Appointment", JSON.stringify(singleEventText))
     }
 };
 
 
-
+function getAppointments() {
+    JSON.parse(localStorage.getItem("appointment"))
+}
 
 
 
