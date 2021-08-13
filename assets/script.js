@@ -34,8 +34,10 @@ for (var i = 0; i < saveButton.length; i++) {
         event.preventDefault();
         var eventTextArea = eventText[i];
         var apptContent = eventTextArea.value
+        if (apptContent !== "") {
         console.log(apptContent);
-        localStorage.setItem("Appointment", JSON.stringify(apptContent));
+        localStorage.setItem("Appointment", apptContent);
+        }
         }
     })
 };
