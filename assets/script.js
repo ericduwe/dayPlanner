@@ -6,7 +6,7 @@ var saveButton = document.getElementsByClassName("saveBtn")
 currentTime = moment().hour()
 
 currentDay.textContent = moment().format("dddd, MMM Do YYYY")
-getAppointments();
+
 
 Array.from(timeBlocks).forEach(block => {
     var blockId = block.id
@@ -33,18 +33,14 @@ for (var i = 0; i < saveButton.length; i++) {
         for (var i=0; i<eventText.length; i++) {
         event.preventDefault();
         var eventTextArea = eventText[i];
-        console.log(eventTextArea.value);
-        localStorage.setItem("Appointment", JSON.stringify(eventTextArea.value));
+        var apptContent = eventTextArea.value
+        console.log(apptContent);
+        localStorage.setItem("Appointment", JSON.stringify(apptContent));
         }
     })
 };
 
 };
-
-
-function getAppointments() {
-    JSON.parse(localStorage.getItem("appointment"))
-}
 
 
 
