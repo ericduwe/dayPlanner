@@ -1,6 +1,6 @@
 var timeBlocks = document.getElementsByClassName("time-block");
 var currentDay = document.getElementById("currentDay");
-var eventText = document.getElementsByClassName("description").value
+var eventText = document.getElementsByClassName("description")
 var saveButton = document.getElementsByClassName("saveBtn")
 currentTime = moment().hour()
 
@@ -8,7 +8,7 @@ currentDay.textContent = moment().format("dddd, MMM Do YYYY")
 
 Array.from(timeBlocks).forEach(block => {
     let blockId = block.id,
-    blockHour;
+        blockHour;
     if (blockId) {
         blockHour = parseInt(blockId);
     }
@@ -24,27 +24,29 @@ Array.from(timeBlocks).forEach(block => {
 
 });
 
-for (var i=0; i < saveButton.length; i++) {
+for (var i = 0; i < saveButton.length; i++) {
     var buttons = saveButton[i]
     buttons.addEventListener("click", function (event) {
         event.preventDefault();
         console.log("Clicked the button!")
+        saveAppointment();
     })
-}
+};
 
-function saveAppointment () {
-    
-    Array.from(eventText).forEach(element => {
-    if (element === "") {
-        alert("Error: Description cannot be blank.");
-    } else {
-        alert(`${element} saved!`);
+function saveAppointment() {
+
+    for (var i = 0; i < eventText.length; i++) {
+        //var eventContent = eventText.value
+        localStorage.setItem("Appointment", eventText.value)
     }
-    });
-}
+};
+
+
+
+
 
 
 function changeBlock(element, color) {
     element.style.backgroundColor = color;
-    
+
 };
